@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans  xmlns="http://www.springframework.org/schema/beans"
+		xmlns:p="http://www.springframework.org/schema/p"
+        xmlns:aop = "http://www.springframework.org/schema/aop"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:context="http://www.springframework.org/schema/context"
+        xmlns:util="http://www.springframework.org/schema/util"
+        xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/util 
+        http://www.springframework.org/schema/util/spring-util.xsd
+        http://www.springframework.org/schema/aop 
+   		http://www.springframework.org/schema/aop/spring-aop.xsd 
+        "
+        > 
+        
+        <bean id="coord" class="yurev.Coords" scope="prototype">
+        	<property name="x" value="0" />
+        	<property name="y" value="0" />
+        </bean>
+               
+        <bean id = "point" class="yurev.Point" scope="prototype">
+        	<constructor-arg value="#123456" />
+        	<!--  <constructor-arg ref="coord" />  -->
+        	<property name="coords" ref="coord" />
+        	
+        </bean>
+        
+        <bean id="circle" class="yurev.Circle" scope="prototype">
+        	<constructor-arg name="color" value="#1200FF" />
+        	<constructor-arg>
+        		<bean class="yurev.Coords">
+        			<property name="x" value="44"></property>
+        			<property name="y" value="555"></property>
+        		</bean>
+        	</constructor-arg>
+        	<constructor-arg name="r" value="123" />
+        </bean>
+        
+</beans>
